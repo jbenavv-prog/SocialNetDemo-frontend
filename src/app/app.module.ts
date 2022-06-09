@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoginModule } from './user-login/user-login.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { UserLoginModule } from './user-login/user-login.module';
   ],
   imports: [
     UserLoginModule,
+    HomeModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
