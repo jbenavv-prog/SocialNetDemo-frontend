@@ -1,0 +1,47 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+img.user-avatar {
+    width: 50px;
+    border-radius: 50%;
+    right: 0;
+    margin-right: 20px;
+}
+
+img.user-avatar:hover {
+    cursor: pointer;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+.session-card {
+    top: 60px;
+    display: none;
+    position: absolute;
+    width: 350px;
+    right: 15px;
+    text-align: center !important;
+
+    ::ng-deep {
+        .session-title {
+            color: #202124;
+            font: 500 16px/24px "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+            letter-spacing: .1px;
+            overflow: hidden;
+            text-align: center;
+            text-overflow: ellipsis;
+        }
+    }
+
+
+    img.user-avatar-session {
+        width: 74px;
+        border-radius: 50%;
+        margin-bottom: 11px;
+        border: 1px solid rgba(32, 33, 36, .13);
+    }
+}
+
+.display {
+    display: block;
+}

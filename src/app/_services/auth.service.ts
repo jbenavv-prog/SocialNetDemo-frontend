@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { User } from './_models';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({
@@ -35,5 +34,9 @@ export class AuthService {
 
   register(user: any) {
     return this.http.post(`${environment.apiUrl}/api/auth/register`, user, { headers: this.headers });
+  }
+
+  public get userValue(): any {
+    return this.userSubject.value;
   }
 }

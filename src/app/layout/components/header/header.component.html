@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" [class.mat-elevation-z10]="true">
+    <span>Demo Red Social</span>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+        <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon>people</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <img class="user-avatar" [src]="profile?.photoProfileURL || defaultImgAvatar" (click)="openSessionCard($event)" />
+    <mat-card class="session-card" [class.mat-elevation-z24]="true" (click)="$event.stopPropagation()">
+        <img class="user-avatar-session" [src]="profile?.photoProfileURL || defaultImgAvatar" alt="user-avatar" />
+        <mat-card-title class="session-title">{{profile?.fullName}}</mat-card-title>
+        <mat-card-subtitle>{{user.data.email}}</mat-card-subtitle>
+        <mat-card-actions>
+            <button mat-stroked-button color="primary" (click)="viewProfile()">Ver Perfil</button>
+        </mat-card-actions>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions>
+            <button class="btn btn-light" (click)="signOut()" mat-button>Cerrar sesión</button>
+        </mat-card-actions>
+    </mat-card>
+</mat-toolbar>
