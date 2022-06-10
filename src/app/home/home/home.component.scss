@@ -1,0 +1,24 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.matcard,
+.new-publication {
+    width: 700px;
+    position: inherit;
+}
+
+img.user-avatar {
+    width: 50px;
+    border-radius: 50%;
+    right: 0;
+    margin-right: 20px;
+}
+
+img.user-avatar:hover {
+    cursor: pointer;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.5);
+}
