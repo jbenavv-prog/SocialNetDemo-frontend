@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_services';
 import { ProfileService } from 'src/app/_services/profile.service';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private profileService: ProfileService,
+    public dialog: MatDialog,
   ) {
     this.user = this.authService.userValue;
   }
@@ -26,4 +28,29 @@ export class HomeComponent implements OnInit {
       this.profile = resp.data;
     })
   }
+
+  openDialog() {
+
+    const dialogRef = this.dialog.open(PublicationDialog, {
+      data: {
+        user: this.user,
+        profile: this.profile,
+        defaultImgAvatar: this.defaultImgAvatar
+      },
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+}
+
+@Component({
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'publication-dialog.html',
+  styleUrls: ['./home.component.scss']
+})
+export class PublicationDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 }

@@ -7,7 +7,7 @@
                         <img class="user-avatar" [src]="profile?.photoProfileURL || defaultImgAvatar" />
                     </div>
                     <div class="col think-container">
-                        <button mat-stroked-button class="full-width think-button">¿Qué estás pensando, {{profile?.fullName}}?</button>
+                        <button mat-stroked-button class="full-width think-button" (click)="openDialog()">¿Qué estás pensando, {{profile?.fullName}}?</button>
                     </div>
                 </div>
             </mat-card>
