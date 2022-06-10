@@ -53,4 +53,17 @@ export class HomeComponent implements OnInit {
 })
 export class PublicationDialog {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  imageSrc: any;
+
+  loadImage(event: any): void {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+
+      const reader = new FileReader();
+      reader.onload = e => this.imageSrc = reader.result;
+
+      reader.readAsDataURL(file);
+    }
+  }
 }

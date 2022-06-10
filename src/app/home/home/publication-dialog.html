@@ -13,6 +13,16 @@
             </mat-form-field>
         </div>
     </div>
+    <div class="row" *ngIf="imageSrc">
+        <div class="col" align="middle">
+            <img class="imageLoaded" [src]="imageSrc" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input type='file' (change)="loadImage($event);" />
+        </div>
+    </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
