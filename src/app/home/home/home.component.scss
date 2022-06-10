@@ -22,3 +22,16 @@ img.user-avatar:hover {
     cursor: pointer;
     box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.5);
 }
+
+.think-container {
+    align-items: center;
+    display: flex;
+}
+
+.think-button {
+  border-radius: 10px;
+}
+
+.full-width {
+    width: 100%;
+}

@@ -3,14 +3,14 @@
         <div class="col">
             <mat-card class="new-publication">
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-md-1">
                         <img class="user-avatar" [src]="profile?.photoProfileURL || defaultImgAvatar" />
                     </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary">Primary</button>
+                    <div class="col think-container">
+                        <button mat-stroked-button class="full-width think-button">¿Qué estás pensando, {{profile?.fullName}}?</button>
                     </div>
                 </div>
-              </mat-card>
+            </mat-card>
         </div>
     </div>
 </div>
