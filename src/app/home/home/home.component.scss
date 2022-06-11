@@ -1,16 +1,11 @@
 .container {
     min-height: 100vh;
-    display: flex;
     justify-content: center;
-    padding: 15px;
 }
 
-.matcard,
-.new-publication {
-    width: 700px;
-    position: inherit;
+.row {
+    margin-bottom: 20px;
 }
-
 img.user-avatar {
     width: 50px;
     border-radius: 50%;
