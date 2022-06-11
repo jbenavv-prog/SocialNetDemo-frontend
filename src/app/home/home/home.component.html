@@ -7,27 +7,38 @@
                         <img class="user-avatar" [src]="profile?.photoProfileURL || defaultImgAvatar" />
                     </div>
                     <div class="col think-container">
-                        <button mat-stroked-button class="full-width think-button" (click)="openDialog()">¿Qué estás pensando, {{profile?.fullName}}?</button>
+                        <button mat-stroked-button class="full-width think-button" (click)="openDialog()">¿Qué estás
+                            pensando, {{profile?.fullName}}?</button>
                     </div>
                 </div>
             </mat-card>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" *ngFor="let publication of publications">
         <div class="col">
             <mat-card class="new-publication">
                 <div class="row">
                     <div class="col col-md-1">
-                        <img class="user-avatar" [src]="profile?.photoProfileURL || defaultImgAvatar" />
+                        <img class="user-avatar" [src]="publication.photoProfileURL|| defaultImgAvatar" />
                     </div>
                     <div class="col think-container">
-                        <button mat-stroked-button class="full-width think-button" (click)="openDialog()">¿Qué estás pensando, {{profile?.fullName}}?</button>
+                        <b>{{publication.fullName}}</b> &nbsp; {{publication.date | date}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{publication.description}}
+                    </div>
+                </div>
+                <div class="row" *ngIf="publication.imageURL">
+                    <div class="col" align="middle">
+                        <img class="image-publication" [src]="publication.imageURL" />
                     </div>
                 </div>
             </mat-card>
         </div>
     </div>
 
-    
+
 </div>
