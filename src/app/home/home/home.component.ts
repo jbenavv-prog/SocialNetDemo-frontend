@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
       let resp: any = response;
       this.profile = resp.data;
     });
-
+    console.log(this.user.data);
     this.getPublications();
   }
 

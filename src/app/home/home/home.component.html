@@ -35,9 +35,9 @@
                         <img class="image-publication" [src]="publication.imageURL" />
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="publication.likes > 0">
                     <div class="col">
-                        hello
+                        <mat-icon class="like-info">thumb_up_alt</mat-icon> &nbsp; {{publication.likes}}
                     </div>
                 </div>
                 <mat-divider></mat-divider>
