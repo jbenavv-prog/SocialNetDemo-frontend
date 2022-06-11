@@ -14,7 +14,6 @@
             </mat-card>
         </div>
     </div>
-
     <div class="row" *ngFor="let publication of publications">
         <div class="col">
             <mat-card class="new-publication">
@@ -34,6 +33,18 @@
                 <div class="row" *ngIf="publication.imageURL">
                     <div class="col" align="middle">
                         <img class="image-publication" [src]="publication.imageURL" />
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="row">
+                    <div class="col" align="middle">
+                        <button  mat-stroked-button class="publication-button" color="primary">
+                            <mat-icon>thumb_up</mat-icon> &nbsp; Me gusta 
+                         </button>
+
+                        <button mat-stroked-button class="publication-button" color="primary">
+                            <mat-icon> chat_bubble</mat-icon> &nbsp; Comentar 
+                        </button>
                     </div>
                 </div>
             </mat-card>

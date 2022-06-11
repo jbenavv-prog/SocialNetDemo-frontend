@@ -6,6 +6,10 @@
 .row {
     margin-bottom: 20px;
 }
+
+.mat-card {
+    position: inherit;
+}
 img.user-avatar {
     width: 50px;
     border-radius: 50%;
@@ -47,4 +51,15 @@ img.user-avatar:hover {
 
 .image-publication {
     width: 50%;
+}
+
+.publication-button {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.mat-divider {
+    width: 80%;
+    position: inherit;
+    transform: translate(10%);
 }
