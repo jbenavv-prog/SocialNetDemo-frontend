@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private profileService: ProfileService,
+    private publicationService: PublicationService,
     public dialog: MatDialog,
   ) {
     this.user = this.authService.userValue;
@@ -22,11 +23,22 @@ export class HomeComponent implements OnInit {
   profile: any;
   defaultImgAvatar: string = '../../../assets/images/avatar/defaultAvatar.png';
   loading: boolean = false;
+  publications: any;
 
   ngOnInit(): void {
     this.profileService.getProfile(this.user.data).subscribe(response => {
       let resp: any = response;
       this.profile = resp.data;
+    });
+
+    this.getPublications();
+  }
+
+  getPublications() {
+    this.publicationService.getPublications().subscribe(response => {
+      const resp: any = response;
+      console.log(resp);
+      this.publications = resp.data.result;
     })
   }
 

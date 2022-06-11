@@ -20,5 +20,10 @@ export class PublicationService {
     return this.http.post<any>(`${environment.apiUrl}/api/publication/create`, formData, { headers: this.headers, params })
       .pipe(map(response => response));
   }
+
+  getPublications() {
+    return this.http.post(`${environment.apiUrl}/api/publication/getPublications`, {}, { headers: this.headers });
+  }
 }
+
 
