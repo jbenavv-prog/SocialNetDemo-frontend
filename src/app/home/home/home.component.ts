@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AuthService, ProfileService, PublicationService } from 'src/app/_services';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ReactionService } from 'src/app/_services/reaction.service';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private profileService: ProfileService,
     private publicationService: PublicationService,
+    private reactionService: ReactionService,
     public dialog: MatDialog,
   ) {
     this.user = this.authService.userValue;
@@ -24,12 +26,8 @@ export class HomeComponent implements OnInit {
   defaultImgAvatar: string = '../../../assets/images/avatar/defaultAvatar.png';
   loading: boolean = false;
   publications: any;
-  globalLikes: any = {
-    6: {
-      likes: 4
-    }
-  }
-  
+  globalLikes: any;
+
   likes: any = {}
 
   ngOnInit(): void {
@@ -83,9 +81,24 @@ export class HomeComponent implements OnInit {
       }
     }
 
-    Object.assign(this.likes, { [idPublication]: { like } });
+    const idTypeReaction = 1;
 
-    console.log(this.likes);
+    Object.assign(this.likes, { [idPublication]: { like, idTypeReaction } });
+
+    const reaction = {
+      idPublication,
+      like,
+      idTypeReaction,
+    }
+
+    const request = {
+      user: this.user.data,
+      reaction
+    }
+
+    this.reactionService.create(request).subscribe(response => {
+      console.log(response);
+    })
   }
 
 }
