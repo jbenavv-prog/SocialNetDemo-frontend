@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   defaultImgAvatar: string = '../../../assets/images/avatar/defaultAvatar.png';
   loading: boolean = false;
   publications: any;
+  likes: [] = [];
 
   ngOnInit(): void {
     this.profileService.getProfile(this.user.data).subscribe(response => {
@@ -57,6 +58,17 @@ export class HomeComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+  like(event: any) {
+    let idPublication: number;
+
+    if (event.target.id) {
+      idPublication = event.target.id
+    } else {
+      idPublication = event.target.parentElement.id
+    }
+  }
+
 }
 
 @Component({

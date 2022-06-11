@@ -38,12 +38,13 @@
                 <mat-divider></mat-divider>
                 <div class="row">
                     <div class="col" align="middle">
-                        <button  mat-stroked-button class="publication-button" color="primary">
-                            <mat-icon>thumb_up</mat-icon> &nbsp; Me gusta 
-                         </button>
+                        <button id="{{publication.idPublication}}" mat-stroked-button class="publication-button"
+                            color="primary" (click)="like($event)">
+                            <mat-icon id="{{publication.idPublication}}">thumb_up</mat-icon> &nbsp; Me gusta
+                        </button>
 
                         <button mat-stroked-button class="publication-button" color="primary">
-                            <mat-icon> chat_bubble</mat-icon> &nbsp; Comentar 
+                            <mat-icon> chat_bubble</mat-icon> &nbsp; Comentar
                         </button>
                     </div>
                 </div>
