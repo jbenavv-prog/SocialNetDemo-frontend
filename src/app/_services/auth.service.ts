@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, map, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
   ) {
     this.userSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('user')!));
     this.user = this.userSubject.asObservable();
@@ -30,6 +32,12 @@ export class AuthService {
         this.userSubject.next(user);
         return user;
       }));
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+    this.userSubject.next(null);
+    this.router.navigate(['/login']);
   }
 
   register(user: any) {

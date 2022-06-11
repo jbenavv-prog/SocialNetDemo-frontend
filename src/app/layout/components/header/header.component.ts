@@ -1,6 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/_services';
-import { ProfileService } from 'src/app/_services/profile.service';
+import { AuthService, ProfileService } from 'src/app/_services';
 import * as $ from 'jquery';
 
 @Component({
@@ -20,12 +19,12 @@ export class HeaderComponent implements OnInit {
     private profileService: ProfileService,
   ) {
     this.user = this.authService.userValue;
+    this.authService.user.subscribe(x => this.user = x);
   }
 
   user: any;
   profile: any;
   defaultImgAvatar: string = '../../../assets/images/avatar/defaultAvatar.png';
-
 
   ngOnInit(): void {
     this.profileService.getProfile(this.user.data).subscribe(response => {
@@ -39,10 +38,11 @@ export class HeaderComponent implements OnInit {
     $(".session-card").toggleClass("display");
   }
 
-  signOut() {
-  }
+  logOut() {
+    this.authService.logout();
+}
 
-  viewProfile(){
-    
+  viewProfile() {
+
   }
 }
