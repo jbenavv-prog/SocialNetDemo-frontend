@@ -24,7 +24,13 @@ export class HomeComponent implements OnInit {
   defaultImgAvatar: string = '../../../assets/images/avatar/defaultAvatar.png';
   loading: boolean = false;
   publications: any;
-  likes: [] = [];
+  globalLikes: any = {
+    6: {
+      likes: 4
+    }
+  }
+  
+  likes: any = {}
 
   ngOnInit(): void {
     this.profileService.getProfile(this.user.data).subscribe(response => {
@@ -61,12 +67,25 @@ export class HomeComponent implements OnInit {
 
   like(event: any) {
     let idPublication: number;
+    let like = 1;
 
     if (event.target.id) {
       idPublication = event.target.id
     } else {
       idPublication = event.target.parentElement.id
     }
+
+    if (this.likes[idPublication]) {
+      if (this.likes[idPublication].like == 1) {
+        like = 0;
+      } else {
+        like = 1
+      }
+    }
+
+    Object.assign(this.likes, { [idPublication]: { like } });
+
+    console.log(this.likes);
   }
 
 }
@@ -117,8 +136,6 @@ export class PublicationDialog {
 
     this.form.get(id)!.updateValueAndValidity();
   }
-
-
 
   onSubmit() {
     console.log('into Submit');
