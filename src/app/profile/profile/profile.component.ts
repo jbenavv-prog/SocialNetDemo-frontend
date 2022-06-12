@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit {
   defaultImgAvatar: string = '../../../assets/images/avatar/defaultAvatar.png';
   likes: any = {};
   commentsEnabled: boolean = false;
+  canEdit: boolean = false;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
@@ -43,6 +44,10 @@ export class ProfileComponent implements OnInit {
       console.log(response);
       const resp: any = response
       this.profile = resp.data;
+
+      if (resp.data.idAccount == this.user.data.id) {
+        this.canEdit = true;
+      }
     });
 
     this.publicationService.getPublicationsByUser(user).subscribe(response => {
@@ -125,5 +130,18 @@ export class ProfileComponent implements OnInit {
       .then(() => {
         window.location.reload();
       });
+  }
+
+  updatePhotoProfile(e: any): void {
+    const event = (e.target as HTMLInputElement);
+    const file = event.files![0];
+    const id = event.id;
+    const formData = new FormData();
+
+    formData.append('photoProfileURL', file);
+
+    this.profileService.updatePhotoProfile(formData, this.user.data).subscribe(response => {
+      console.log(response);
+    })
   }
 }

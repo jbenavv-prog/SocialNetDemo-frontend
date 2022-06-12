@@ -1,10 +1,36 @@
 <div class="container">
     <div class="row header" style="background-image: url('{{profile?.bannerImageURL || defaultBanner}}');">
-        <div class="col col-md-3">
-            <img class="user-avatar-header" [src]="profile?.photoProfileURL || defaultImgAvatar" />
+        <div class="row">
+            <div class="col col-md-3">
+                <img class="user-avatar-header" [src]="profile?.photoProfileURL || defaultImgAvatar" />
+            </div>
+            <div class="col">
+                <p>{{profile?.fullName}}</p>
+            </div>
         </div>
-        <div class="col">
-            <p>{{profile?.fullName}}</p>
+        <div class="row edit-button" *ngIf="canEdit">
+            <div class="col col-md-1">
+                <button mat-raised-button [matMenuTriggerFor]="menu" class="" color="primary">
+                    <mat-icon>edit</mat-icon> &nbsp; Editar
+                </button>
+
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="fileInputPhotoProfile.click()">
+                        <mat-icon>publish</mat-icon>
+                        <span>Subir foto de perfil</span>
+                    </button>
+                    <input id="imagePublication" hidden type='file' #fileInputPhotoProfile
+                        (change)="updatePhotoProfile($event);" />
+                    <button mat-menu-item>
+                        <mat-icon>publish</mat-icon>
+                        <span>Subir foto de portada</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>edit</mat-icon>
+                        <span>Editar detalles</span>
+                    </button>
+                </mat-menu>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -20,7 +46,8 @@
                     <mat-card class="new-publication">
                         <div class="row">
                             <div class="col col-md-1">
-                                <img class="user-avatar" (click)="navigateToProfile(publication?.idAccount)" [src]="publication.photoProfileURL|| defaultImgAvatar" />
+                                <img class="user-avatar" (click)="navigateToProfile(publication?.idAccount)"
+                                    [src]="publication.photoProfileURL|| defaultImgAvatar" />
                             </div>
                             <div class="col think-container">
                                 <b>{{publication.fullName}}</b> &nbsp; {{publication.date | date}}
@@ -42,7 +69,8 @@
                                 <div *ngIf="validateLike(publication.idAccountsWhoLiked, publication.idPublication)">
                                 </div>
                             </div>
-                            <div class="col" *ngIf="publication.comments">{{publication.comments.length}} comentario(s)</div>
+                            <div class="col" *ngIf="publication.comments">{{publication.comments.length}} comentario(s)
+                            </div>
                         </div>
                         <mat-divider></mat-divider>
                         <div class="row">
@@ -57,12 +85,13 @@
                                 </button>
                             </div>
                         </div>
-        
+
                         <mat-divider></mat-divider>
                         <div class="row" *ngIf="commentsEnabled">
                             <div class="row">
                                 <div class="col">
-                                    <mat-form-field class="comment" (keyup.enter)="onEnterComment($event)" appearance="fill">
+                                    <mat-form-field class="comment" (keyup.enter)="onEnterComment($event)"
+                                        appearance="fill">
                                         <mat-label>Escribe un comentario</mat-label>
                                         <input matInput [id]="publication.idPublication">
                                     </mat-form-field>
@@ -71,7 +100,9 @@
                             <div class="row" *ngFor="let comment of publication.comments">
                                 <div class="row">
                                     <div class="col">
-                                        <img class="user-avatar-comment" [src]="comment?.photoProfileURL || defaultImgAvatar" (click)="navigateToProfile(comment?.idAccount)" />
+                                        <img class="user-avatar-comment"
+                                            [src]="comment?.photoProfileURL || defaultImgAvatar"
+                                            (click)="navigateToProfile(comment?.idAccount)" />
                                         <b>{{comment.fullName}}</b>
                                     </div>
                                 </div>
