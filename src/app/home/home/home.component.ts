@@ -71,13 +71,14 @@ export class HomeComponent implements OnInit {
       idPublication = event.target.parentElement.id
     }
 
-    let like = this.likes[idPublication].like;
+    let like: any;
 
     if (this.likes[idPublication]) {
+      like = this.likes[idPublication].like;
       if (this.likes[idPublication].like == 1) {
         like = 0;
       } else {
-        like = 1
+        like = 1;
       }
     }
 
