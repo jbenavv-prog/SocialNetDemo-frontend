@@ -20,7 +20,7 @@
                         <span>Subir foto de perfil</span>
                     </button>
                     <input id="imagePublication" hidden type='file' #fileInputPhotoProfile
-                        (change)="updatePhotoProfile($event);" />
+                        (change)="updatePhotoProfile($event);" accept="image/*"/>
                     <button mat-menu-item>
                         <mat-icon>publish</mat-icon>
                         <span>Subir foto de portada</span>
@@ -54,8 +54,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col" *ngIf="publication.description != 'undefined'">
                                 {{publication.description}}
+                            </div>
+                            <div class="col" *ngIf="publication.idTypePublication == 2">
+                                Actualizó su foto de perfil
                             </div>
                         </div>
                         <div class="row" *ngIf="publication.imageURL">

@@ -142,6 +142,7 @@ export class ProfileComponent implements OnInit {
 
     this.profileService.updatePhotoProfile(formData, this.user.data).subscribe(response => {
       console.log(response);
+      this.ngOnInit();
     })
   }
 }

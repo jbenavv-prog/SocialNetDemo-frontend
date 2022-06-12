@@ -8,12 +8,13 @@
 
 img.user-avatar {
     width: 50px;
-    border-radius: 50%;
+    clip-path: circle();
     right: 0;
     margin-right: 20px;
 }
 
-img.user-avatar:hover, img.user-avatar-session:hover {
+img.user-avatar:hover,
+img.user-avatar-session:hover {
     cursor: pointer;
     box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.7);
 }
@@ -40,7 +41,7 @@ img.user-avatar:hover, img.user-avatar-session:hover {
 
     img.user-avatar-session {
         width: 74px;
-        border-radius: 50%;
+        clip-path: circle();
         margin-bottom: 11px;
         border: 1px solid rgba(32, 33, 36, .13);
     }

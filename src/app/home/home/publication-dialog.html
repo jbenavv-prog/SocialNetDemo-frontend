@@ -27,7 +27,7 @@
     <button type="button" mat-icon-button (click)="fileInput.click()">
         <mat-icon>add_photo_alternate</mat-icon>
     </button>
-    <input id="imagePublication" hidden type='file' #fileInput (change)="loadImage($event);" />
+    <input id="imagePublication" hidden type='file' #fileInput (change)="loadImage($event);" accept="image/*"/>
     <span class="spacer"></span>
     <button mat-button mat-dialog-close>Cancel</button>
     <button mat-flat-button [mat-dialog-close]="true" type="submit" form="form" color="primary">Publicar</button>

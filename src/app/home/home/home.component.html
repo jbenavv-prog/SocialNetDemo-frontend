@@ -4,7 +4,8 @@
             <mat-card class="new-publication">
                 <div class="row">
                     <div class="col col-md-1">
-                        <img class="user-avatar" [src]="profile?.photoProfileURL || defaultImgAvatar" (click)="navigateToProfile(profile?.idAccount)" />
+                        <img class="user-avatar" [src]="profile?.photoProfileURL || defaultImgAvatar"
+                            (click)="navigateToProfile(profile?.idAccount)" />
                     </div>
                     <div class="col think-container">
                         <button mat-stroked-button class="full-width think-button" (click)="openDialog()">¿Qué estás
@@ -19,15 +20,19 @@
             <mat-card class="new-publication">
                 <div class="row">
                     <div class="col col-md-1">
-                        <img class="user-avatar" [src]="publication.photoProfileURL|| defaultImgAvatar" (click)="navigateToProfile(publication?.idAccount)" />
+                        <img class="user-avatar" [src]="publication.photoProfileURL|| defaultImgAvatar"
+                            (click)="navigateToProfile(publication?.idAccount)" />
                     </div>
                     <div class="col think-container">
                         <b>{{publication.fullName}}</b> &nbsp; {{publication.date | date}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col" *ngIf="publication.description != 'undefined'">
                         {{publication.description}}
+                    </div>
+                    <div class="col" *ngIf="publication.idTypePublication == 2">
+                        Actualizó su foto de perfil
                     </div>
                 </div>
                 <div class="row" *ngIf="publication.imageURL">
@@ -70,7 +75,8 @@
                     <div class="row" *ngFor="let comment of publication.comments">
                         <div class="row">
                             <div class="col">
-                                <img class="user-avatar-comment" [src]="comment?.photoProfileURL || defaultImgAvatar" (click)="navigateToProfile(comment?.idAccount)" />
+                                <img class="user-avatar-comment" [src]="comment?.photoProfileURL || defaultImgAvatar"
+                                    (click)="navigateToProfile(comment?.idAccount)" />
                                 <b>{{comment.fullName}}</b>
                             </div>
                         </div>
