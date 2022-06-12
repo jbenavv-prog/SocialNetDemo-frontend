@@ -24,6 +24,10 @@ export class PublicationService {
   getPublications() {
     return this.http.post(`${environment.apiUrl}/api/publication/getPublications`, {}, { headers: this.headers });
   }
+
+  getPublicationsByUser(user: any) {
+    return this.http.post(`${environment.apiUrl}/api/publication/getPublicationsByUser`, user, { headers: this.headers });
+  }
 }
 
 

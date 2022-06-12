@@ -1,1 +1,14 @@
-<p>profile works!</p>
+<div class="container">
+    <div class="row header" style="background-image: url('{{profile?.bannerImageURL || defaultBanner}}');">
+        <div class="col">
+            <img class="user-avatar" [src]="profile?.photoProfileURL || defaultImgAvatar" />
+        </div>
+        <div class="col">
+            <p>{{profile?.fullName}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+</div>

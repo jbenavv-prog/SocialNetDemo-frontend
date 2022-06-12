@@ -1,0 +1,25 @@
+.container {
+    min-height: 100vh;
+    justify-content: center;
+}
+
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+img.user-avatar {
+    width: 150px;
+    border-radius: 50%;
+    right: 0;
+    margin-right: 20px;
+}
+
+img.user-avatar:hover {
+    cursor: pointer;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.5);
+}
