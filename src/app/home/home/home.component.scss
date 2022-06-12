@@ -11,6 +11,11 @@
     position: inherit;
     padding-left: 60px;
 }
+
+button.mat-focus-indicator.full-width.think-button.mat-stroked-button.mat-button-base {
+    position: inherit;
+}
+
 img.user-avatar {
     width: 50px;
     border-radius: 50%;
@@ -19,6 +24,18 @@ img.user-avatar {
 }
 
 img.user-avatar:hover {
+    cursor: pointer;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+img.user-avatar-comment {
+    width: 30px;
+    border-radius: 50%;
+    right: 0;
+    margin-right: 20px;
+}
+
+img.user-avatar-comment:hover {
     cursor: pointer;
     box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.5);
 }
@@ -62,7 +79,8 @@ img.user-avatar:hover {
 .mat-divider {
     width: 80%;
     position: inherit;
-    transform: translate(10%);;
+    transform: translate(10%);
+    ;
     margin-bottom: 20px;
 }
 

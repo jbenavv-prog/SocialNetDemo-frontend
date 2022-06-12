@@ -69,7 +69,10 @@
                     </div>
                     <div class="row" *ngFor="let comment of publication.comments">
                         <div class="row">
-                            <div class="col">{{comment.fullName}}</div>
+                            <div class="col">
+                                <img class="user-avatar-comment" [src]="comment?.photoProfileURL || defaultImgAvatar" />
+                                <b>{{comment.fullName}}</b>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col">{{comment.description}}</div>

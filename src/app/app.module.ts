@@ -8,6 +8,7 @@ import { UserLoginModule } from './user-login/user-login.module';
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from './layout/layout.module';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { LayoutModule } from './layout/layout.module';
     UserLoginModule,
     LayoutModule,
     HomeModule,
+    ProfileModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
