@@ -20,11 +20,11 @@
                         <span>Subir foto de perfil</span>
                     </button>
                     <input id="imagePublication" hidden type='file' #fileInputPhotoProfile
-                        (change)="updatePhotoProfile($event);" accept="image/*"/>
-                    <button mat-menu-item>
+                        (change)="updatePhotoProfile($event);" accept="image/*" />
+                    <!-- <button mat-menu-item>
                         <mat-icon>publish</mat-icon>
                         <span>Subir foto de portada</span>
-                    </button>
+                    </button> -->
                     <button mat-menu-item (click)="openDialog()">
                         <mat-icon>edit</mat-icon>
                         <span>Editar detalles</span>
@@ -55,6 +55,23 @@
             </mat-card>
         </div>
         <div class="col">
+            <div class="row">
+                <div class="col">
+                    <mat-card class="new-publication">
+                        <div class="row">
+                            <div class="col col-md-1">
+                                <img class="user-avatar" [src]="profile?.photoProfileURL || defaultImgAvatar"
+                                    (click)="navigateToProfile(profile?.idAccount)" />
+                            </div>
+                            <div class="col think-container">
+                                <button mat-stroked-button class="full-width think-button" (click)="openDialogPublication()">¿Qué estás
+                                    pensando, {{profile?.fullName}}?</button>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+
             <div class="row" *ngFor="let publication of publications">
                 <div class="col">
                     <mat-card class="new-publication">
