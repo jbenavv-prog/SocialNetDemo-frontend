@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AuthService, CommentService, ProfileService, PublicationService, ReactionService } from 'src/app/_services';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
     private reactionService: ReactionService,
     private commentService: CommentService,
     public dialog: MatDialog,
+    private router: Router,
   ) {
     this.user = this.authService.userValue;
   }
@@ -132,6 +134,13 @@ export class HomeComponent implements OnInit {
       this.ngOnInit();
     })
   }
+
+  navigateToProfile(idAccount: string) {
+    this.router.navigate([`profile/${idAccount}`])
+    .then(() => {
+      window.location.reload();
+    });
+  }
 }
 
 @Component({
@@ -145,6 +154,7 @@ export class PublicationDialog {
     public data: any,
     private fb: FormBuilder,
     private publicationService: PublicationService,
+    private router: Router,
   ) { }
 
   imageSrc: any;
@@ -194,5 +204,12 @@ export class PublicationDialog {
         console.log(response);
       })
     }
+  }
+
+  navigateToProfile(idAccount: string) {
+    this.router.navigate([`profile/${idAccount}`])
+    .then(() => {
+      window.location.reload();
+    });
   }
 }

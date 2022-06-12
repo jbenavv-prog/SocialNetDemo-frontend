@@ -20,7 +20,7 @@
                     <mat-card class="new-publication">
                         <div class="row">
                             <div class="col col-md-1">
-                                <img class="user-avatar" [src]="publication.photoProfileURL|| defaultImgAvatar" />
+                                <img class="user-avatar" (click)="navigateToProfile(publication?.idAccount)" [src]="publication.photoProfileURL|| defaultImgAvatar" />
                             </div>
                             <div class="col think-container">
                                 <b>{{publication.fullName}}</b> &nbsp; {{publication.date | date}}
@@ -71,7 +71,7 @@
                             <div class="row" *ngFor="let comment of publication.comments">
                                 <div class="row">
                                     <div class="col">
-                                        <img class="user-avatar-comment" [src]="comment?.photoProfileURL || defaultImgAvatar" />
+                                        <img class="user-avatar-comment" [src]="comment?.photoProfileURL || defaultImgAvatar" (click)="navigateToProfile(comment?.idAccount)" />
                                         <b>{{comment.fullName}}</b>
                                     </div>
                                 </div>

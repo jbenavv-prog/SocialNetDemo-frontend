@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService, ProfileService } from 'src/app/_services';
 import * as $ from 'jquery';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private profileService: ProfileService,
+    private router: Router,
   ) {
     this.user = this.authService.userValue;
     this.authService.user.subscribe(x => this.user = x);
@@ -40,9 +42,12 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.authService.logout();
-}
+  }
 
-  viewProfile() {
-
+  navigateToProfile(idAccount: string) {
+    this.router.navigate([`profile/${idAccount}`])
+    .then(() => {
+      window.location.reload();
+    });
   }
 }

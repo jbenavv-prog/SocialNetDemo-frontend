@@ -13,7 +13,7 @@ img.user-avatar {
     margin-right: 20px;
 }
 
-img.user-avatar:hover {
+img.user-avatar:hover, img.user-avatar-session:hover {
     cursor: pointer;
     box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.7);
 }

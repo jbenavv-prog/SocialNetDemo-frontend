@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, CommentService, ProfileService, PublicationService, ReactionService } from 'src/app/_services';
 
 @Component({
@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private authService: AuthService,
     private profileService: ProfileService,
     private publicationService: PublicationService,
@@ -117,5 +118,12 @@ export class ProfileComponent implements OnInit {
       console.log(response);
       this.ngOnInit();
     })
+  }
+
+  navigateToProfile(idAccount: string) {
+    this.router.navigate([`profile/${idAccount}`])
+      .then(() => {
+        window.location.reload();
+      });
   }
 }

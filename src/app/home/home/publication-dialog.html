@@ -2,7 +2,7 @@
 <mat-dialog-content class="mat-typography">
     <div class="row">
         <div class="col">
-            <img class="user-avatar" [src]="data.profile?.photoProfileURL || data.defaultImgAvatar" />
+            <img class="user-avatar" [src]="data.profile?.photoProfileURL || data.defaultImgAvatar" (click)="navigateToProfile(data.profile?.idAccount)" />
         </div>
     </div>
     <form id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
