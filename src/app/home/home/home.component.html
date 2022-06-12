@@ -39,9 +39,9 @@
                     <div class="col">
                         <mat-icon class="like-info">thumb_up_alt</mat-icon> &nbsp; {{publication.likes}}&nbsp;
                         <div *ngIf="validateLike(publication.idAccountsWhoLiked, publication.idPublication)">
-
                         </div>
                     </div>
+                    <div class="col" *ngIf="publication.comments">{{publication.comments.length}} comentario(s)</div>
                 </div>
                 <mat-divider></mat-divider>
                 <div class="row">
