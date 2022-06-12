@@ -60,9 +60,9 @@
                 <mat-divider></mat-divider>
                 <div class="row" *ngIf="commentsEnabled">
                     <div class="col">
-                        <mat-form-field [id]="publication.idPublication" class="comment" (keyup.enter)="onEnterComment($event)" appearance="fill">
+                        <mat-form-field class="comment" (keyup.enter)="onEnterComment($event)" appearance="fill">
                             <mat-label>Escribe un comentario</mat-label>
-                            <input matInput>
+                            <input matInput [id]="publication.idPublication">
                         </mat-form-field>
                     </div>
                 </div>

@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AuthService, ProfileService, PublicationService } from 'src/app/_services';
+import { AuthService, CommentService, ProfileService, PublicationService, ReactionService } from 'src/app/_services';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ReactionService } from 'src/app/_services/reaction.service';
+
 
 @Component({
   selector: 'app-home',
@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
     private profileService: ProfileService,
     private publicationService: PublicationService,
     private reactionService: ReactionService,
+    private commentService: CommentService,
     public dialog: MatDialog,
   ) {
     this.user = this.authService.userValue;
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
   publications: any;
   globalLikes: any;
   commentsEnabled: boolean = false;
+  commentsChips: any = [];
 
   likes: any = {}
 
@@ -115,8 +117,19 @@ export class HomeComponent implements OnInit {
   }
 
   onEnterComment(event: any) {
-    console.log('enter');
-    console.log(event);
+    const comment = {
+      idPublication: event.target.id,
+      description: event.target.value
+    }
+
+    const request = {
+      user: this.user.data,
+      comment
+    }
+
+    this.commentService.create(request).subscribe(response => {
+      console.log(response);
+    })
   }
 }
 
