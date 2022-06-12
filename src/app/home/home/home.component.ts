@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
       let resp: any = response;
       this.profile = resp.data;
     });
-    console.log(this.user.data);
     this.getPublications();
   }
 
@@ -65,13 +64,14 @@ export class HomeComponent implements OnInit {
 
   like(event: any) {
     let idPublication: number;
-    let like = 1;
 
     if (event.target.id) {
       idPublication = event.target.id
     } else {
       idPublication = event.target.parentElement.id
     }
+
+    let like = this.likes[idPublication].like;
 
     if (this.likes[idPublication]) {
       if (this.likes[idPublication].like == 1) {
@@ -98,7 +98,19 @@ export class HomeComponent implements OnInit {
 
     this.reactionService.create(request).subscribe(response => {
       console.log(response);
+      this.ngOnInit();
     })
+  }
+
+  validateLike(idAccountsWhoLiked: any, idPublication: any) {
+    for (let i in idAccountsWhoLiked) {
+      if (idAccountsWhoLiked[i] == this.user.data.id) {
+        Object.assign(this.likes, { [idPublication]: { like: 1, idTypeReaction: 1 } });
+        return true;
+      }
+    }
+    Object.assign(this.likes, { [idPublication]: { like: 0, idTypeReaction: 1 } });
+    return false;
   }
 
 }
@@ -151,7 +163,6 @@ export class PublicationDialog {
   }
 
   onSubmit() {
-    console.log('into Submit');
     if (this.form.valid) {
       this.loading = true;
       const formData = new FormData();

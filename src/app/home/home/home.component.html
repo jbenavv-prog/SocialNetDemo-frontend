@@ -37,7 +37,10 @@
                 </div>
                 <div class="row" *ngIf="publication.likes > 0">
                     <div class="col">
-                        <mat-icon class="like-info">thumb_up_alt</mat-icon> &nbsp; {{publication.likes}}
+                        <mat-icon class="like-info">thumb_up_alt</mat-icon> &nbsp; {{publication.likes}}&nbsp;
+                        <div *ngIf="validateLike(publication.idAccountsWhoLiked, publication.idPublication)">
+                            contigo les gusta esta publicación
+                        </div>
                     </div>
                 </div>
                 <mat-divider></mat-divider>
@@ -55,6 +58,4 @@
             </mat-card>
         </div>
     </div>
-
-
 </div>
