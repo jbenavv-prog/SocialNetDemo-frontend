@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DetailsDialog, ProfileComponent } from './profile/profile.component';
+import { DetailsDialog, ProfileComponent, PublicationDialog } from './profile/profile.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     ProfileComponent,
     DetailsDialog,
+    PublicationDialog,
   ],
   imports: [
     CommonModule,

@@ -202,12 +202,13 @@ export class PublicationDialog {
 
       this.publicationService.create(formData, this.data.user.data).subscribe(response => {
         console.log(response);
+        this.navigateToProfile(this.data.user.data.id);
       })
     }
   }
 
   navigateToProfile(idAccount: string) {
-    this.router.navigate([`profile/${idAccount}`])
+    this.router.navigate([`home`])
     .then(() => {
       window.location.reload();
     });
