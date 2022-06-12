@@ -129,6 +129,7 @@ export class HomeComponent implements OnInit {
 
     this.commentService.create(request).subscribe(response => {
       console.log(response);
+      this.ngOnInit();
     })
   }
 }

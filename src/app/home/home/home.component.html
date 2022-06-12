@@ -59,11 +59,24 @@
 
                 <mat-divider></mat-divider>
                 <div class="row" *ngIf="commentsEnabled">
-                    <div class="col">
-                        <mat-form-field class="comment" (keyup.enter)="onEnterComment($event)" appearance="fill">
-                            <mat-label>Escribe un comentario</mat-label>
-                            <input matInput [id]="publication.idPublication">
-                        </mat-form-field>
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field class="comment" (keyup.enter)="onEnterComment($event)" appearance="fill">
+                                <mat-label>Escribe un comentario</mat-label>
+                                <input matInput [id]="publication.idPublication">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row" *ngFor="let comment of publication.comments">
+                        <div class="row">
+                            <div class="col">{{comment.fullName}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{comment.description}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{comment.date}}</div>
+                        </div>
                     </div>
                 </div>
 
