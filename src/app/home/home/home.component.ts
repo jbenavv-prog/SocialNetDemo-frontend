@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   loading: boolean = false;
   publications: any;
   globalLikes: any;
+  commentsEnabled: boolean = false;
 
   likes: any = {}
 
@@ -98,7 +99,6 @@ export class HomeComponent implements OnInit {
     }
 
     this.reactionService.create(request).subscribe(response => {
-      console.log(response);
       this.ngOnInit();
     })
   }
@@ -114,6 +114,10 @@ export class HomeComponent implements OnInit {
     return false;
   }
 
+  onEnterComment(event: any) {
+    console.log('enter');
+    console.log(event);
+  }
 }
 
 @Component({

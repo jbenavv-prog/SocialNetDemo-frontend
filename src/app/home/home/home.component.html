@@ -39,7 +39,7 @@
                     <div class="col">
                         <mat-icon class="like-info">thumb_up_alt</mat-icon> &nbsp; {{publication.likes}}&nbsp;
                         <div *ngIf="validateLike(publication.idAccountsWhoLiked, publication.idPublication)">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -50,11 +50,23 @@
                             color="primary" (click)="like($event)">
                             <mat-icon id="{{publication.idPublication}}">thumb_up</mat-icon> &nbsp; Me gusta
                         </button>
-                        <button mat-stroked-button class="publication-button" color="primary">
+                        <button mat-stroked-button class="publication-button" (click)="commentsEnabled = true"
+                            color="primary">
                             <mat-icon> chat_bubble</mat-icon> &nbsp; Comentar
                         </button>
                     </div>
                 </div>
+
+                <mat-divider></mat-divider>
+                <div class="row" *ngIf="commentsEnabled">
+                    <div class="col">
+                        <mat-form-field [id]="publication.idPublication" class="comment" (keyup.enter)="onEnterComment($event)" appearance="fill">
+                            <mat-label>Escribe un comentario</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+
             </mat-card>
         </div>
     </div>
