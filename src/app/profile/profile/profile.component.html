@@ -1,14 +1,91 @@
 <div class="container">
     <div class="row header" style="background-image: url('{{profile?.bannerImageURL || defaultBanner}}');">
-        <div class="col">
-            <img class="user-avatar" [src]="profile?.photoProfileURL || defaultImgAvatar" />
+        <div class="col col-md-3">
+            <img class="user-avatar-header" [src]="profile?.photoProfileURL || defaultImgAvatar" />
         </div>
         <div class="col">
             <p>{{profile?.fullName}}</p>
         </div>
     </div>
     <div class="row">
-        <div class="col"></div>
-        <div class="col"></div>
+        <div class="col col-md-3">
+            <mat-card>
+                <mat-card-title>Detalles</mat-card-title>
+
+            </mat-card>
+        </div>
+        <div class="col">
+            <div class="row" *ngFor="let publication of publications">
+                <div class="col">
+                    <mat-card class="new-publication">
+                        <div class="row">
+                            <div class="col col-md-1">
+                                <img class="user-avatar" [src]="publication.photoProfileURL|| defaultImgAvatar" />
+                            </div>
+                            <div class="col think-container">
+                                <b>{{publication.fullName}}</b> &nbsp; {{publication.date | date}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {{publication.description}}
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="publication.imageURL">
+                            <div class="col" align="middle">
+                                <img class="image-publication" [src]="publication.imageURL" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-icon class="like-info">thumb_up_alt</mat-icon> &nbsp; {{publication.likes}}&nbsp;
+                                <div *ngIf="validateLike(publication.idAccountsWhoLiked, publication.idPublication)">
+                                </div>
+                            </div>
+                            <div class="col" *ngIf="publication.comments">{{publication.comments.length}} comentario(s)</div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div class="row">
+                            <div class="col" align="middle">
+                                <button id="{{publication.idPublication}}" mat-stroked-button class="publication-button"
+                                    color="primary" (click)="like($event)">
+                                    <mat-icon id="{{publication.idPublication}}">thumb_up</mat-icon> &nbsp; Me gusta
+                                </button>
+                                <button mat-stroked-button class="publication-button" (click)="commentsEnabled = true"
+                                    color="primary">
+                                    <mat-icon> chat_bubble</mat-icon> &nbsp; Comentar
+                                </button>
+                            </div>
+                        </div>
+        
+                        <mat-divider></mat-divider>
+                        <div class="row" *ngIf="commentsEnabled">
+                            <div class="row">
+                                <div class="col">
+                                    <mat-form-field class="comment" (keyup.enter)="onEnterComment($event)" appearance="fill">
+                                        <mat-label>Escribe un comentario</mat-label>
+                                        <input matInput [id]="publication.idPublication">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row" *ngFor="let comment of publication.comments">
+                                <div class="row">
+                                    <div class="col">
+                                        <img class="user-avatar-comment" [src]="comment?.photoProfileURL || defaultImgAvatar" />
+                                        <b>{{comment.fullName}}</b>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">{{comment.description}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">{{comment.date}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

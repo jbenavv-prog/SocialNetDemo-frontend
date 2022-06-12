@@ -10,10 +10,33 @@
     color: white;
     font-size: 30px;
     font-weight: bolder;
+    margin-bottom: 30px;
 }
 
-img.user-avatar {
+.row {
+    margin-bottom: 20px;
+}
+
+.mat-card {
+    position: inherit;
+    padding-left: 30px;
+}
+
+img.user-avatar-header {
     width: 150px;
+    border-radius: 50%;
+    right: 0;
+    margin-right: 20px;
+}
+
+img.user-avatar-header:hover {
+    cursor: pointer;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+img.user-avatar {
+    width: 50px;
     border-radius: 50%;
     right: 0;
     margin-right: 20px;
@@ -22,4 +45,68 @@ img.user-avatar {
 img.user-avatar:hover {
     cursor: pointer;
     box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+img.user-avatar-comment {
+    width: 30px;
+    border-radius: 50%;
+    right: 0;
+    margin-right: 20px;
+}
+
+img.user-avatar-comment:hover {
+    cursor: pointer;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.think-container {
+    align-items: center;
+    display: flex;
+}
+
+.think-button {
+    border-radius: 10px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.think-input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.imageLoaded {
+    width: 350px;
+    margin-bottom: 20px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.image-publication {
+    width: 50%;
+}
+
+.publication-button {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.mat-divider {
+    width: 80%;
+    position: inherit;
+    transform: translate(10%);
+    ;
+    margin-bottom: 20px;
+}
+
+.like-info {
+    margin-left: 90px;
+}
+
+.comment {
+    margin-left: 90px;
 }
