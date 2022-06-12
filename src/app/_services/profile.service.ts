@@ -20,8 +20,12 @@ export class ProfileService {
   }
 
   updatePhotoProfile(formData: any, user: any) {
-    const params = new HttpParams({ fromString: `id=${user.id}&idTypePublication=2`});
+    const params = new HttpParams({ fromString: `id=${user.id}&idTypePublication=2` });
     return this.http.post<any>(`${environment.apiUrl}/api/profiles/updatePhotoProfile`, formData, { headers: this.headers, params })
-    .pipe(map(response => response));
+      .pipe(map(response => response));
+  }
+
+  updateDetalis(request: any) {
+    return this.http.post(`${environment.apiUrl}/api/profiles/updateDetails`, request, { headers: this.headers });
   }
 }

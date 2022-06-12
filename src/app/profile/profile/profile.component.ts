@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, CommentService, ProfileService, PublicationService, ReactionService } from 'src/app/_services';
 
@@ -12,6 +14,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    public dialog: MatDialog,
     private authService: AuthService,
     private profileService: ProfileService,
     private publicationService: PublicationService,
@@ -144,5 +147,64 @@ export class ProfileComponent implements OnInit {
       console.log(response);
       this.ngOnInit();
     })
+  }
+
+  openDialog() {
+
+    const dialogRef = this.dialog.open(DetailsDialog, {
+      data: {
+        user: this.user,
+        profile: this.profile,
+        defaultImgAvatar: this.defaultImgAvatar
+      },
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+}
+
+@Component({
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'details-dialog.html',
+  styleUrls: ['./profile.component.scss']
+})
+export class DetailsDialog {
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public data: any,
+    private fb: FormBuilder,
+    private router: Router,
+    private profileService: ProfileService,
+  ) { }
+
+  imageSrc: any;
+  loading: boolean = false;
+
+  form = this.fb.group({
+    phone: [''],
+    location: [''],
+    college: ['']
+  });
+
+  onSubmit() {
+    if (this.form.valid) {
+      console.log('is Valid');
+      const formData = this.form.value;
+      const user = this.data.user.data;
+
+      this.profileService.updateDetalis({ formData, user }).subscribe(response => {
+        console.log(response);
+      });
+    }
+  }
+
+  navigateToProfile(idAccount: string) {
+    this.router.navigate([`profile/${idAccount}`])
+      .then(() => {
+        window.location.reload();
+      });
   }
 }
