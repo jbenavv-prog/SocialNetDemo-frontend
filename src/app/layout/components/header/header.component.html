@@ -4,9 +4,9 @@
     <button mat-icon-button routerLink="/home">
         <mat-icon>home</mat-icon>
     </button>
-    <button mat-icon-button>
+    <!-- <button mat-icon-button>
         <mat-icon>people</mat-icon>
-    </button>
+    </button> -->
     <span class="spacer"></span>
     <img class="user-avatar" [src]="profile?.photoProfileURL || defaultImgAvatar" (click)="openSessionCard($event)" />
     <mat-card class="session-card" [class.mat-elevation-z24]="true" (click)="$event.stopPropagation()">
