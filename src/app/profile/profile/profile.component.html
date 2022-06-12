@@ -37,7 +37,21 @@
         <div class="col col-md-3">
             <mat-card>
                 <mat-card-title>Detalles</mat-card-title>
-
+                <div class="row">
+                    <div class="col">
+                        Telefono: <div *ngIf="profile?.phone"><b>{{profile?.phone}}</b></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Ubicación: <div *ngIf="profile?.location"><b>{{profile?.location}}</b></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Colegio: <div *ngIf="profile?.location"><b>{{profile?.college}}</b></div>
+                    </div>
+                </div>
             </mat-card>
         </div>
         <div class="col">
