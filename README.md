@@ -9,12 +9,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 ## Backend
 
 Esta aplicación usa un  Backend con Node.js v16.15.0, Express Framework y PostgreSQL
+[socialNetDemo-backend](https://github.com/jbenavv-prog/socialNetDemo-backend)
 
-
-## Build
-
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Modelo ER
+Modelo ER del aplicativo [ER Social Net Demo](https://drive.google.com/file/d/1EghpnBha5lXw4qpkFxFcUV_1btibJLmU/view?usp=sharing)
