@@ -217,6 +217,7 @@ export class DetailsDialog {
 
       this.profileService.updateDetalis({ formData, user }).subscribe(response => {
         console.log(response);
+        this.navigateToProfile(this.data.user.data.id);
       });
     }
   }

@@ -8,29 +8,29 @@
                 <p>{{profile?.fullName}}</p>
             </div>
         </div>
-        <div class="row edit-button" *ngIf="canEdit">
-            <div class="col col-md-1">
-                <button mat-raised-button [matMenuTriggerFor]="menu" class="" color="primary">
-                    <mat-icon>edit</mat-icon> &nbsp; Editar
-                </button>
+    </div>
+    <div class="row edit-button" *ngIf="canEdit">
+        <div class="col col-md-1">
+            <button mat-raised-button [matMenuTriggerFor]="menu" class="" color="primary">
+                <mat-icon>edit</mat-icon> &nbsp; Editar
+            </button>
 
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="fileInputPhotoProfile.click()">
-                        <mat-icon>publish</mat-icon>
-                        <span>Subir foto de perfil</span>
-                    </button>
-                    <input id="imagePublication" hidden type='file' #fileInputPhotoProfile
-                        (change)="updatePhotoProfile($event);" accept="image/*" />
-                    <!-- <button mat-menu-item>
-                        <mat-icon>publish</mat-icon>
-                        <span>Subir foto de portada</span>
-                    </button> -->
-                    <button mat-menu-item (click)="openDialog()">
-                        <mat-icon>edit</mat-icon>
-                        <span>Editar detalles</span>
-                    </button>
-                </mat-menu>
-            </div>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="fileInputPhotoProfile.click()">
+                    <mat-icon>publish</mat-icon>
+                    <span>Subir foto de perfil</span>
+                </button>
+                <input id="imagePublication" hidden type='file' #fileInputPhotoProfile
+                    (change)="updatePhotoProfile($event);" accept="image/*" />
+                <!-- <button mat-menu-item>
+                    <mat-icon>publish</mat-icon>
+                    <span>Subir foto de portada</span>
+                </button> -->
+                <button mat-menu-item (click)="openDialog()">
+                    <mat-icon>edit</mat-icon>
+                    <span>Editar detalles</span>
+                </button>
+            </mat-menu>
         </div>
     </div>
     <div class="row">
